@@ -9,6 +9,7 @@
 		$roleString = "MAHASISWA";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Lamaran</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='membuatLamaran.php'>Buat Lamaran</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='logAsisten.php'>Log Per Mata Kuliah</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='daftarLog.php'>Log</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='buatLog.php'>Buat Log</a></li>";
