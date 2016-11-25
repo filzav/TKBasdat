@@ -35,7 +35,7 @@
 	}
 
 
-	if(isset($_POST["newPassword"] || $_POST["newEmailAktif"] || $_POST["newWaktuKosong"] || $_POST["newNoTelp"] || $_POST["newBank"] || $_POST["newNoRek"] || $_POST["newUrlMukatab"] || $_POST["newUrlFoto"])){
+	if(isset($_POST["newPassword"])){
 		if($_POST["newPassword"] == $password){
 			$newPassword = $_POST["newPassword"];
 			$sql = "UPDATE MAHASISWA SET password='" .$newPassword."' WHERE npm='" .$npm. "'";
