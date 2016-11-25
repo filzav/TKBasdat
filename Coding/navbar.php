@@ -9,7 +9,8 @@
 		$roleString = "MAHASISWA";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Lamaran</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='log.php'>Log</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='daftarLog.php'>Log</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='buatLog.php'>Buat Log</a></li>";
 		$roleIdentity = $roleIdentity . "<li><a href='profile.php'>$nama</a></li>";
 	}
 	elseif ($role == "DOSEN") {
