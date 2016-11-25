@@ -7,7 +7,6 @@
 	$role = $_SESSION["role"];
 	$nama = $_SESSION["nama"];
 	$telp = "";
-	$resp = "";
 	
 	$conn = connectDB();
 	$sql = "SELECT * FROM MAHASISWA WHERE username='" . $username . "'";
@@ -19,27 +18,16 @@
 		$field = pg_fetch_array($result);
 		$npm = $field[0];
 		$password = $field[3];
-		$email = $field[4];
 		$emailAktif = $field[5];
 		$waktuKosong = $field[6];
 		$bank = $field[7];
 		$norek = $field[8];
-		$urlMukatab = $field[9];
-		$urlFoto = $field[10];
 	}
 	
 	$sql = "SELECT * FROM TELEPON_MAHASISWA WHERE npm='" . $npm . "'";
 	$result = pg_query($conn, $sql);
 	while($row = pg_fetch_assoc($result)){
 		$telp = $telp . $row['nomortelepon'] . " ";
-	}
-	if(isset($_POST["newPassword"])){
-		if($_POST["newPassword"] != $password){
-			$newPassword = $_POST["newPassword"];
-			$sql = "UPDATE MAHASISWA SET password='" .$newPassword."' WHERE npm='" .$npm. "'";
-			$result = pg_query($conn, $sql);
-			$resp = "saved";
-		}
 	}
 ?>
 
@@ -53,49 +41,46 @@
 
 	<body>
 		<div id="maintitle">
-			<h1>Data Profil <?php echo $nama; ?></h1>
+			<h1>Detail Pelamar</h1>
 		</div>
 		<table>
-			<form method="POST" action="profile.php">
-				<button>Submit</button> <?php echo " ". $resp; ?>
-				<tr>
-					<td>NPM</td>
-					<td><?php echo $npm; ?></td>
-				</tr><tr>
-					<td>Nama</td>
-					<td><?php echo $nama; ?></td>
-				</tr><tr>
-					<td>Username</td>
-					<td><?php echo $username; ?></td>
-				</tr><tr>
-					<td>Password</td>
-					<td><input type="text" name="newPassword" placeholder="<?php echo $password; ?>"/></td>
-				</tr><tr>
-					<td>E-mail</td>
-					<td><?php echo $email; ?></td>
-				</tr><tr>
-					<td>E-mail Aktif</td>
-					<td><input type="text" name="emailAktif" placeholder="<?php echo $emailAktif; ?>"/></td>
-				</tr><tr>
-					<td>Waktu Kosong</td>
-					<td><input type="text" name="waktuKosong" placeholder="<?php echo $waktuKosong; ?>"/></td>
-				</tr><tr>
-					<td>No. Telp.</td>
-					<td><input type="text" name="noTelp" placeholder="<?php echo $telp; ?>"/></td>
-				</tr><tr>
-					<td>Bank</td>
-					<td><input type="text" name="bank" placeholder="<?php echo $bank; ?>"/></td>
-				</tr><tr>
-					<td>No. Rekening</td>
-					<td><input type="text" name="noRek" placeholder="<?php echo $norek; ?>"/></td>
-				</tr><tr>
-					<td>Halaman Muka Buku Tabungan (*.jpg)</td>
-					<td><input type="text" name="urlMukatab" placeholder="<?php echo $urlMukatab; ?>"/></td>
-				</tr><tr>
-					<td>Foto (*.jpg)</td>
-					<td><input type="text" name="urlFoto" placeholder="<?php echo $urlFoto; ?>"/></td>
-				</tr>
-			</form>
+			<tr>
+				<td>Nama</td>
+				<td><?php echo $nama; ?></td>
+			</tr><tr>
+				<td>Email</td>
+				<td><?php echo $emailAktif; ?></td>
+			</tr><tr>
+				<td>NPM</td>
+				<td><?php echo $npm; ?></td>
+			</tr><tr>
+				<td>Telepon</td>
+				<td><?php echo $telp . "<br>"; ?></td>
+			</tr><tr>
+				<td>Waktu Kosong</td>
+				<td><?php echo $waktuKosong; ?></td>
+			</tr><tr>
+				<td>Detail Rekening</td>
+				<td><?php echo $bank . " - " . $norek . "<br> a/n " . $nama; ?></td>
+			</tr>
 		</table>
+
+		<div id="maintitle">
+			<h1>Riwayat Akademis</h1>
+		</div>
+		<table>
+			<tr>
+				<td>Basis Data Lanjut</td>
+				<td>A-</td>
+			</tr><tr>
+				<td>Prasyarat1: Basis Data</td>
+			</tr><tr>
+				<td>Prasyarat2</td>
+			</tr><tr>
+				<td>Prasyarat3</td>
+			</tr>
+		</table>
+		<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong><?php echo $nama; ?></strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+		<button>Rekomendasikan</button>
 	</body>
 </html>
