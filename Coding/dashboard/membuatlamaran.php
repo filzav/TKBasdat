@@ -50,14 +50,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Daftar Lowongan</title>
+		<title>Membuat Lamaran</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h2>Daftar Lowongan<?echo $role; ?></h2> <br>
+		<h2>Membuat Lamaran<?echo $role; ?></h2> <br>
 		<table style="width: 100%">
 			<tr>
 				<td>Term</td>

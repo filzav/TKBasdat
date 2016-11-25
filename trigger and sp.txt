@@ -9,26 +9,34 @@ RETURNS "trigger" AS
 '
 DECLARE result integer;
 BEGIN 
-Select count(NEW.idlowongan) into integer from lamaran
-UPDATE lowongan SET jumlah_pelamar = integer;
-RETURN NEW
+UPDATE lowongan SET jumlah_pelamar = jumlah_pelamar + 1
+WHERE lowongan.idLowongan = new.idLowongan;
+RETURN NEW;
 END;
 '
 LANGUAGE 'plpgsql' VOLATILE;
 
 
+
+
+
 CREATE TRIGGER jumlah_pelamar_diterima
-AFTER INSERT
+AFTER INSERT OR UPDATE
 ON lamaran
 FOR EACH ROW
-EXECUTE PROCEDURE jumlah_pelamar();
+EXECUTE PROCEDURE jumlah_pelamar_diterima();
 
 CREATE OR REPLACE FUNCTION jumlah_pelamar_diterima()
 RETURNS "trigger" AS
 '
+DECLARE result integer;
 BEGIN 
-UPDATE lowongan SET jumlah_pelamar = jumlah_pelamar + 1;
-RETURN jumlah_pelamar;
+IF(new.id_st_lamaran = 3)
+THEN
+UPDATE lowongan SET jumlah_pelamar_diterima = jumlah_pelamar_diterima + 1
+WHERE lowongan.idLowongan = new.idLowongan;
+RETURN NEW;
+END IF;
 END;
 '
 LANGUAGE 'plpgsql' VOLATILE;
