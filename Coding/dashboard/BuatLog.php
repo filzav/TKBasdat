@@ -1,4 +1,8 @@
-
+<?php
+	session_start();
+	include "../navbar.php";
+	require "../database.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>

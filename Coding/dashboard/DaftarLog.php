@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	include "../navbar.php";
+	require "../database.php";
+?>
 <html>
 	<title> Daftar Log </title>
 	<head> 

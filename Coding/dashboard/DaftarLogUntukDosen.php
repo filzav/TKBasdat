@@ -1,4 +1,8 @@
-
+<?php
+	session_start();
+	include "../navbar.php";
+	require "../database.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,14 +11,14 @@
 				border: 1px solid black;
 			}
 		</style>
-		<title>Buat Log</title>
+		<title>Daftar Log</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h2>Buat Log</h2> <br>
+		<h2>Daftar Log</h2> <br>
 		<br>
 		<table style="width: 50%">
 			<tr>
