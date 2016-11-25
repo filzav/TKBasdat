@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Detail Pelamar</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div th:include="navbar"></div>
+		<h2>Detail Pelamar</h2>
+		<table style="width: 100%">
+			<tr>
+				<td>Nama</td>
+				<td><!--<input type="name" name="nama">-->Andi Sartono</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><!--<input type="email" name="email">-->andi@sartono.com</td>
+			</tr>
+			<tr>
+				<td>NPM</td>
+				<td><!--<input type="NPM" name="NPM">-->12004950234</td>
+			</tr>
+			<tr>
+				<td>Telepon</td>
+				<td><!--<input type="string" name="telepon">-->081739479287</td>
+			</tr>
+			<tr>
+				<td>Waktu Kosong</td>
+				<td><!--<input type="string" name="waktu">-->Rabu 09:00-12:00 <br> Kamis 16:00-18:00</td>
+			</tr>
+			<tr>
+				<td>Detail Rekening</td>
+				<td><!--<input type="string" name="rekening">-->BNI – 9086213 <br>
+				a/n ANDI SARTONO</td>
+		</table>
+		<h3>Riwayat Akademis</h3>
+		<tr>
+			<td>Basis Data Lanjut</td>
+			<td>A-</td>
+		</tr>
+		<tr>
+			<td>Prasyarat: Basis Data</td>
+		</tr>
+		<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>Andi Sartono</strong> sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+
+		<div>
+			<button type="submit" name="action" value="save">Terima</button>
+		</div>
+	</body>
+</html>
