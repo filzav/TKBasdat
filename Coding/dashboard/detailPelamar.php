@@ -3,13 +3,13 @@
 	include "../navbar.php";
 	require "../database.php";
 
-	$username = $_SESSION['username'];
+	/*$username = $_SESSION['username'];
 	$role = $_SESSION["role"];
-	$nama = $_SESSION["nama"];
+	$nama = $_SESSION["nama"];*/
 	$telp = "";
 	
 	$conn = connectDB();
-	$sql = "SELECT * FROM MAHASISWA WHERE username='" . $username . "'";
+	$sql = "SELECT * FROM MAHASISWA WHERE username='mahdi.firdaus'";
 	$result = pg_query($conn, $sql);
 	if (!$result) {
 		die("Error in SQL query: " . pg_last_error());
@@ -17,6 +17,7 @@
 	if (pg_num_rows($result) != 0) {
 		$field = pg_fetch_array($result);
 		$npm = $field[0];
+		$nama = $field[1];
 		$password = $field[3];
 		$emailAktif = $field[5];
 		$waktuKosong = $field[6];

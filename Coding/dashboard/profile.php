@@ -33,8 +33,10 @@
 	while($row = pg_fetch_assoc($result)){
 		$telp = $telp . $row['nomortelepon'] . " ";
 	}
-	if(isset($_POST["newPassword"])){
-		if($_POST["newPassword"] != $password){
+
+
+	if(isset($_POST["newPassword"] || $_POST["newEmailAktif"] || $_POST["newWaktuKosong"] || $_POST["newNoTelp"] || $_POST["newBank"] || $_POST["newNoRek"] || $_POST["newUrlMukatab"] || $_POST["newUrlFoto"])){
+		if($_POST["newPassword"] == $password){
 			$newPassword = $_POST["newPassword"];
 			$sql = "UPDATE MAHASISWA SET password='" .$newPassword."' WHERE npm='" .$npm. "'";
 			$result = pg_query($conn, $sql);
@@ -75,25 +77,25 @@
 					<td><?php echo $email; ?></td>
 				</tr><tr>
 					<td>E-mail Aktif</td>
-					<td><input type="text" name="emailAktif" placeholder="<?php echo $emailAktif; ?>"/></td>
+					<td><input type="text" name="newEmailAktif" placeholder="<?php echo $emailAktif; ?>"/></td>
 				</tr><tr>
 					<td>Waktu Kosong</td>
-					<td><input type="text" name="waktuKosong" placeholder="<?php echo $waktuKosong; ?>"/></td>
+					<td><input type="text" name="newWaktuKosong" placeholder="<?php echo $waktuKosong; ?>"/></td>
 				</tr><tr>
 					<td>No. Telp.</td>
-					<td><input type="text" name="noTelp" placeholder="<?php echo $telp; ?>"/></td>
+					<td><input type="text" name="newNoTelp" placeholder="<?php echo $telp; ?>"/></td>
 				</tr><tr>
 					<td>Bank</td>
-					<td><input type="text" name="bank" placeholder="<?php echo $bank; ?>"/></td>
+					<td><input type="text" name="newBank" placeholder="<?php echo $bank; ?>"/></td>
 				</tr><tr>
 					<td>No. Rekening</td>
-					<td><input type="text" name="noRek" placeholder="<?php echo $norek; ?>"/></td>
+					<td><input type="text" name="newNoRek" placeholder="<?php echo $norek; ?>"/></td>
 				</tr><tr>
 					<td>Halaman Muka Buku Tabungan (*.jpg)</td>
-					<td><input type="text" name="urlMukatab" placeholder="<?php echo $urlMukatab; ?>"/></td>
+					<td><input type="text" name="newUrlMukatab" placeholder="<?php echo $urlMukatab; ?>"/></td>
 				</tr><tr>
 					<td>Foto (*.jpg)</td>
-					<td><input type="text" name="urlFoto" placeholder="<?php echo $urlFoto; ?>"/></td>
+					<td><input type="text" name="newUrlFoto" placeholder="<?php echo $urlFoto; ?>"/></td>
 				</tr>
 			</form>
 		</table>

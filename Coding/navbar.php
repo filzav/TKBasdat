@@ -16,6 +16,7 @@
 		$roleString = "DOSEN";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='lamaran.php'>Daftar Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='detailPelamar.php'>Detail Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='log.php'>Log</a></li>";
 	}
 	$roleIdentity = $roleIdentity . "<li><a href=#>Logged in as: $roleString</a></li>";
