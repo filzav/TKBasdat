@@ -1,0 +1,92 @@
+CREATE OR REPLACE FUNCTION jml_pelamar()
+	RETURN trigger AS
+$$
+	DECLARE
+		jumlah = INT;
+	BEGIN
+		IF(TG_OP = 'INSERT') THEN
+			SELECT *
+			FROM LOWONGAN
+
+			UPDATE jumlah SET jmlPelamar = jmlPelamar+1
+			WHERE = NEW.;
+			RETURN NEW;
+		ELSEIF(TG_OP = 'UPDATE') THEN
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET = 
+			WHERE  = OLD.;
+			
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET  = 
+			WHERE = NEW.;
+			RETURN NEW;
+		ELSEIF(TG_OP = 'DELETE') THEN
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET = -
+			WHERE = NEW.;
+			RETURN OLD;
+		ENDIF;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER jumlahpelamar
+AFTER INSERT OR UPDATE OR DELETE
+ON LOWONGAN FOR EACH ROW
+EXECUTE PROCEDURE jml_pelamar();
+
+CREATE OR REPLACE FUNCTION jml_diterimas()
+	RETURN trigger AS
+$$
+	DECLARE
+		jumlah = INT;
+	BEGIN
+		IF(TG_OP = 'INSERT') THEN
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET = +
+			WHERE = NEW.;
+			RETURN NEW;
+		ELSEIF(TG_OP = 'UPDATE') THEN
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET = -
+			WHERE = OLD.;
+			
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET = +
+			WHERE = NEW.;
+			RETURN NEW;
+		ELSEIF(TG_OP = 'DELETE') THEN
+			SELECT
+			FROM
+			WHERE 
+
+			UPDATE SET  = -
+			WHERE = NEW.;
+			RETURN OLD;
+		ENDIF;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER jumlahditerima
+AFTER INSERT OR UPDATE OR DELETE
+ON LOWONGAN FOR EACH ROW
+EXECUTE PROCEDURE jml_total_tagihan();
