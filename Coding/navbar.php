@@ -8,14 +8,23 @@
 	if ($role == "MHS") {
 		$roleString = "MAHASISWA";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='lamaran.php'>Lamaran</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Lamaran</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='log.php'>Log</a></li>";
 		$roleIdentity = $roleIdentity . "<li><a href='profile.php'>$nama</a></li>";
 	}
 	elseif ($role == "DOSEN") {
 		$roleString = "DOSEN";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='lamaran.php'>Daftar Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='bukaLowongan.php'>Buka Lowongan</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Daftar Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='detailPelamar.php'>Detail Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='log.php'>Log</a></li>";
+	}
+	elseif ($role == "ADMIN") {
+		$roleString = "ADMIN";
+		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='bukaLowongan.php'>Buka Lowongan</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Daftar Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='detailPelamar.php'>Detail Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='log.php'>Log</a></li>";
 	}

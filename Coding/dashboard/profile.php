@@ -50,7 +50,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="widtd=device-widtd, initial-scale=1">
-		<title>SIAsisten Fasilkom UI</title>
+		<title>Profile <?php echo $nama; ?></title>
 	</head>
 
 	<body>

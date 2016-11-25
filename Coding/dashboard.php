@@ -11,6 +11,9 @@
 		elseif ($role == "DOSEN") {
 			$activities[0] = $roleList[0];
 		}
+		elseif ($role == "ADMIN") {
+			$activities[0] = $roleList[0];
+		}
 		$activities[0] = "dashboard/".$activities[0];
 		header("Location: ".$activities[0]);
 	} else {

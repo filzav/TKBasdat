@@ -37,7 +37,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="widtd=device-widtd, initial-scale=1">
-		<title>SIAsisten Fasilkom UI</title>
+		<title>Detail Pelamar</title>
 	</head>
 
 	<body>
