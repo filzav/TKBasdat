@@ -75,9 +75,9 @@
 					echo "<td>".$dosen."</td>";
 
 					if($row['status'] == 't')
-						echo "<td>diterima</td>";
+						echo "<td>Dibuka</td>";
 					else
-						echo "<td>ditolak</td>";
+						echo "<td>Belum dibuka / Sudah ditutup</td>";
 
 					echo "<td>".$row['jumlah_asisten']."</td>";
 					echo "<td> 20 </td>";
