@@ -11,13 +11,26 @@
 	$email = "";
 	$profil = "";
 	$status = "";
-
+	
 	$conn = connectDB();
-	$sql = "SELECT * FROM MAHASISWA WHERE username='" . $username . "'";
+	$sql = "SELECT * FROM LAMARAN WHERE username='" . $username . "'";
 	$result = pg_query($conn, $sql);
-	/*if (!$result) {
+	if (!$result) {
 		die("Error in SQL query: " . pg_last_error());
-	}*/
+	} echo "cek";
+	if (pg_num_rows($result) != 0) {
+		echo "cek";
+		$field = pg_fetch_array($result);
+		for ($nomor = 1; $nomor <= 1000; $nomor++) {
+			echo "$nomor";
+		}
+		$nomor = $field[0];
+		$nama = $field[1];
+		$npm = $field[2];
+		$email = $field[3];
+		$profil = $field[4];
+		$status = $field[5];
+	}
 ?>
 
 <!DOCTYPE html>
