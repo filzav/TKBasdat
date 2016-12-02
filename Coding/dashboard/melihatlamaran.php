@@ -6,24 +6,22 @@
 	$username = $_SESSION['username'];
 	$role = $_SESSION["role"];
 	$nama = $_SESSION["nama"];
+	$idlamaran = 47;
 	$nomor = "";
 	$npm = "";
 	$email = "";
 	$profil = "";
 	$status = "";
-	
+
+
 	$conn = connectDB();
-	$sql = "SELECT * FROM LAMARAN WHERE username='" . $username . "'";
+	$sql = "SELECT * FROM LAMARAN WHERE idlamaran=".$idlamaran."";
 	$result = pg_query($conn, $sql);
 	if (!$result) {
 		die("Error in SQL query: " . pg_last_error());
-	} echo "cek";
-	if (pg_num_rows($result) != 0) {
-		echo "cek";
+	}
+	if ($result) {
 		$field = pg_fetch_array($result);
-		for ($nomor = 1; $nomor <= 1000; $nomor++) {
-			echo "$nomor";
-		}
 		$nomor = $field[0];
 		$nama = $field[1];
 		$npm = $field[2];
@@ -54,12 +52,12 @@
 				<th>Status</th>
 			</tr>
 			<tr>
-				<td><?echo $nomor; ?></td>
-				<td><?echo $nama; ?></td>
-				<td><?echo $npm; ?></td>
-				<td><?echo $email; ?></td>
-				<td><?echo $profil; ?></td>
-				<td><?echo $status; ?></td>
+				<td><?= $nomor ?></td>
+				<td><?= $nama ?></td>
+				<td><?= $npm ?></td>
+				<td><?= $email ?></td>
+				<td><?= $profil ?></td>
+				<td><?= $status ?></td>
 			</tr>
 			</table>
 	</body>
