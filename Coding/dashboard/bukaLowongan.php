@@ -11,7 +11,7 @@
 		<h1>Tambah Lowongan</h1>
 			<form action="">
 				<h4>Term</h4>
-				Ganjil, 2016<br>
+				Genap, 2016<br>
 				<h4>Mata Kuliah</h4> 
 				<input type="text" name="mata_kuliah"><br>
 				
@@ -23,8 +23,6 @@
 				<h4>Syarat tambahan </h4>
 				<input type="text" name="syarat_tambahan"><br>
 				<h4>Daftar Pengajar:</h4>
-				Anto<br>
-				Budi<br>
 				<input type="submit" value="Submit">
 			</form> 
 
