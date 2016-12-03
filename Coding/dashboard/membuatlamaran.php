@@ -17,15 +17,14 @@
 
 		$conn = connectDB();
 		 $sql = "INSERT INTO lamaran (npm,idlowongan,id_st_lamaran,ipk,jumlahsks,nip) VALUES ($npm,$idlowongan,1,$ipk,$sks,$nip)";
-		 echo $sql;
 		 $result = pg_query($conn, $sql);
-		 if($result){
+		 /*if($result){
 		 	echo "masuk";
 		 	die();
 		 }else{
 		 	echo "gakmasuk";
 		 	die();
-		 }
+		 }*/
 	}
 	
 	if(!empty($_GET)){
@@ -40,39 +39,6 @@
 
 	$id_st_lamaran = 1;//status melamar
 
-	// $conn = connectDB();
-	// $sql = "SELECT * FROM LAMARAN WHERE idlamaran='" . $idlamaran . "'" ;
-	// $result = pg_query($conn, $sql);
-	// if (!$result) {
-	// 	die("Error in SQL query: " . pg_last_error());
-	// }
-	// if (pg_num_rows($result) != 0) {
-	// 	$field = pg_fetch_array($result);
-	// 	$idlamaran = field[0];
-	// 	$npm = field[1];
-	// 	$idlowongan = field[2];
-	// 	$id_st_lamaran = field[3];
-	// 	$IPK = field[4];
-	// 	$jumlahsks = field[5];
-	// 	$nip = field[6];
-	// }
-
-	// $conn = connectDB();
-	// $sql = "SELECT * FROM MATA_KULIAH WHERE kode = '" . $kode . "'";
-	// $result = pg_query($conn, $sql);
-	/*if (!$result) {
-		die("Error in SQL query: " . pg_last_error());
-	}
-	if (pg_num_rows($result) != 0) {
-		$field = pg_fetch_array($result);
-		$idlamaran = field[0];
-		$npm = field[1];
-		$idlowongan = field[2];
-		$id_st_lamaran = field[3];
-		$IPK = field[4];
-		$jumlahsks = field[5];
-		$nip = field[6];
-	}*/
 ?>
 
 <!DOCTYPE html>
@@ -111,11 +77,12 @@
 
 			
 		</table>
-				<input type="hidden" name="idlowongan" value="<?=$idlowongan?>" required>
-				<input type="hidden" name="nip" value="<?=$nipdosen?>" required>
+		
+		<input type="hidden" name="idlowongan" value="<?=$idlowongan?>" required>
+		<input type="hidden" name="nip" value="<?=$nipdosen?>" required>
 
 		<input type="submit" value="Daftar">
-				<a href="" >BATAL</a>
+		<a href="" >BATAL</a>
 		</form>
 	</body>
 </html>
