@@ -95,10 +95,23 @@
 		</tr></table>";
 
 	if($role == "DOSEN"){
-		$ket = "<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p><button>Rekomendasikan</button>";
+		$ket = "<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+		<button method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "' name='rekomendasi'>Rekomendasikan</button>";
 	}
 	elseif($role == "ADMIN"){
-		$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong>  sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p><button>Terima</button>";
+		$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong>  sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+		<button method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "' name='terima'>Terima</button>";
+	}
+
+	if(isset($_POST["rekomendasi"]) OR isset($_POST["terima"])){
+		if ($_POST["rekomendasi"] != null) {
+			$sql = "UPDATE STATUS_LAMARAN SET status='2' WHERE id='" .$idLam. "'";
+			$result = pg_query($conn, $sql);
+		}
+		if ($_POST["terima"] != null) {
+			$sql = "UPDATE STATUS_LAMARAN SET status='3' WHERE id='" .$idLam. "'";
+			$result = pg_query($conn, $sql);
+		}
 	}
 ?>
 
