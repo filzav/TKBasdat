@@ -2,9 +2,6 @@
 	session_start();
 	include "../navbar.php";
 	require "../database.php";
-	if(!isset($_SESSION["username"])){
-		header("Location: ../index.php");
-	}
 
 	$npm = $_GET['npm'];
 	$idLamaran = $_GET['idLam'];

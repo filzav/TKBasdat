@@ -2,6 +2,10 @@
 	$username = $_SESSION['username'];
 	$role = $_SESSION["role"];
 	$nama = $_SESSION["nama"];
+	if(!isset($_SESSION["username"])){
+		header("Location: ../index.php");
+	}
+	
 	$roleString = "";
 	$roleFunctions = "";
 	$roleIdentity = "";

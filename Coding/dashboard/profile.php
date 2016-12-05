@@ -2,9 +2,6 @@
 	session_start();
 	include "../navbar.php";
 	require "../database.php";
-	if(!isset($_SESSION["username"])){
-		header("Location: ../index.php");
-	}
 
 	$username = $_SESSION['username'];
 	$role = $_SESSION["role"];
