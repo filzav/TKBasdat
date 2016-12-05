@@ -60,7 +60,7 @@
 			</tr>
 		</table>";
 
-	$sql = "SELECT mk.nama, mmkmk.nilai, mk.kode
+	$sql = "SELECT mk.nama, mmkmk.nilai, mk.kode, la.id_st_lamaran
 		FROM MAHASISWA m, LAMARAN la, LOWONGAN lo, KELAS_MK kmk, MATA_KULIAH mk, MHS_MENGAMBIL_KELAS_MK mmkmk 
 		WHERE m.npm=la.npm AND la.idlowongan=lo.idlowongan AND lo.idkelasmk=kmk.idkelasmk AND kmk.kode_mk=mk.kode AND mmkmk.idkelasmk=kmk.idkelasmk AND mmkmk.npm=m.npm AND m.npm='" .$npm. "' AND la.idlamaran='" .$idLamaran. "'";
 	$result = pg_query($conn, $sql);
@@ -72,6 +72,12 @@
 		$namaMk = $field[0];
 		$nilai = $field[1];
 		$kodeMkParent = $field[2];
+		$status = $field[3];
+	}
+
+	// Memastikan bukan data yang sudah di Terima
+	if($status == '3'){
+		header("Location: melihatLamaran.php");
 	}
 
 	$dataAkademis = "";
@@ -99,12 +105,23 @@
 		$dataAkademis = $dataAkademis . "</table>";
 
 	if($role == "DOSEN"){
-		$ket = "<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
-		<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='rekomendasi' value='Rekomendasi'/></form>";
+		if($status != '2'){
+			$ket = "<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+			<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='rekomendasi' value='Rekomendasi'/></form>";
+		}
+		else{
+			$ket = "<h3>Sudah direkomendasikan</h3>";
+		}
 	}
 	elseif($role == "ADMIN"){
-		$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
-		<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='terima' value='Terima'/></form>";
+		if($status != '3'){
+			$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+			<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='terima' value='Terima'/></form>";
+		}
+		// Dari Daftar Pelamar, Seharusnya sudah tidak ada yang statusnya "diterima"
+		else{
+			$ket = "<h3>Sudah diterima</h3>";
+		}
 	}
 
 	$test = "";
@@ -115,7 +132,10 @@
 			$result = pg_query($conn, $sql);
 			if (!$result) {
 				die("Error in SQL query: " . pg_last_error());
-			}	
+			}
+			else {
+				$ket = "<h3>Recomended</h3>";
+			}
 		}
 	}
 	if(isset($_POST["terima"])){
@@ -125,6 +145,9 @@
 			$result = pg_query($conn, $sql);
 			if (!$result) {
 				die("Error in SQL query: " . pg_last_error());
+			}
+			else {
+				$ket = "<h3>Diterima</h3>";
 			}
 		}
 	}
