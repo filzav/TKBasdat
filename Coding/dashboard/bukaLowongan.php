@@ -9,7 +9,7 @@
 	
 	<body>
 		<h1>Tambah Lowongan</h1>
-			<form action="">
+			<form action="postLowongan.php"  method="post">
 				<h4>Term</h4>
 				Genap, 2016<br>
 				<h4>Mata Kuliah</h4> 
