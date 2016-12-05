@@ -2,6 +2,9 @@
 	session_start();
 	include "../navbar.php";
 	require "../database.php";
+	if(!isset($_SESSION["username"])){
+		header("Location: ../index.php");
+	}
 
 	$npm = $_GET['npm'];
 	$idLamaran = $_GET['idLam'];
@@ -87,30 +90,42 @@
 	if (pg_num_rows($result) != 0) {
 		$field = pg_fetch_array($result);
 		$namaMkChild = $field[0];
+		$dataAkademis = $dataAkademis .
+			"<tr>
+				<td>Prasyarat1: " .$namaMkChild. "</td>
+			</tr></table>";
 	}
-
-	$dataAkademis = $dataAkademis .
-		"<tr>
-			<td>Prasyarat1: " .$namaMkChild. "</td>
-		</tr></table>";
+	else
+		$dataAkademis = $dataAkademis . "</table>";
 
 	if($role == "DOSEN"){
 		$ket = "<p>Silahkan klik tombol <strong>Rekomendasikan</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten, Administrator akan menerima lamaran mahasiswa tersebut jika mahasiswa tersebut jika beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
-		<button method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "' name='rekomendasi'>Rekomendasikan</button>";
+		<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='rekomendasi' value='Rekomendasi'/></form>";
 	}
 	elseif($role == "ADMIN"){
-		$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong>  sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
-		<button method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "' name='terima'>Terima</button>";
+		$ket = "<p>Silahkan klik tombol <strong>Terima</strong> jika ingin memilih <strong>" .$nama. "</strong> sebagai Asisten. Pastikan beban jam kerja yang dimiliki oleh mahasiswa tersebut masih memadai</p>
+		<form method='POST' action='detailPelamar.php?npm=" .$npm. "&idLam=" .$idLamaran. "'><input type='submit' name='terima' value='Terima'/></form>";
 	}
 
-	if(isset($_POST["rekomendasi"]) OR isset($_POST["terima"])){
+	$test = "";
+	if(isset($_POST["rekomendasi"])){
 		if ($_POST["rekomendasi"] != null) {
-			$sql = "UPDATE STATUS_LAMARAN SET status='2' WHERE id='" .$idLam. "'";
+			$test = "Masuk Rekomendasi";
+			$sql = "UPDATE LAMARAN SET id_st_lamaran='2' WHERE npm='" .$npm. "' AND idlamaran='" .$idLamaran. "'";
 			$result = pg_query($conn, $sql);
+			if (!$result) {
+				die("Error in SQL query: " . pg_last_error());
+			}	
 		}
+	}
+	if(isset($_POST["terima"])){
 		if ($_POST["terima"] != null) {
-			$sql = "UPDATE STATUS_LAMARAN SET status='3' WHERE id='" .$idLam. "'";
+			$test = "Masuk Terima";
+			$sql = "UPDATE LAMARAN SET id_st_lamaran='3' WHERE npm='" .$npm. "' AND idlamaran='" .$idLamaran. "'";
 			$result = pg_query($conn, $sql);
+			if (!$result) {
+				die("Error in SQL query: " . pg_last_error());
+			}
 		}
 	}
 ?>
@@ -134,5 +149,6 @@
 		</div>
 		<?php echo $dataAkademis; ?>
 		<?php echo $ket; ?>
+		<?php echo $test; ?>
 	</body>
 </html>
