@@ -18,13 +18,6 @@
 		$conn = connectDB();
 		 $sql = "INSERT INTO lamaran (npm,idlowongan,id_st_lamaran,ipk,jumlahsks,nip) VALUES ($npm,$idlowongan,1,$ipk,$sks,$nip)";
 		 $result = pg_query($conn, $sql);
-		 /*if($result){
-		 	echo "masuk";
-		 	die();
-		 }else{
-		 	echo "gakmasuk";
-		 	die();
-		 }*/
 	}
 	
 	if(!empty($_GET)){
@@ -33,7 +26,7 @@
 		$term = $_GET['term'];
 		$idlowongan = $_GET['idlowongan'];
 		$nipdosen=$_GET['nip'];
-	}else{
+	} else{
 		die();
 	}
 
@@ -51,7 +44,7 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h2>Membuat Lamaran<?echo $role; ?></h2> <br>
+		<h2>Daftar Lowongan <?php echo "(" .$role .")"; ?></h2> <br>
 		<table style="width: 100%">
 		<form method="POST" action="membuatlamaran.php">
 			<tr>
@@ -68,11 +61,11 @@
 			</tr>
 			<tr>
 				<td>IPK</td>
-				<td><input type="text" name="ipk" required></td>
+				<td><input id="ipk" max="4" min="0" name="ipk" step="any" type="number" required/>
 			</tr>
 			<tr>
 				<td>SKS</td>
-				<td><input type="text" name="sks" required></td>
+				<td><input id="sks" max="30" min="0" name="sks" type="number" required/>
 			</tr>
 
 			

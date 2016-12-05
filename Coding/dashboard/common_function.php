@@ -29,7 +29,15 @@
 		$sql = "SELECT * FROM mata_kuliah WHERE nama='$nama'" ;
 		$result = pg_query($conn, $sql);
 		$user_arr= pg_fetch_array($result);
-		return $user_arr['status'];
+		return $user_arr;
+	}
+
+	function getNipDosen($nip){
+		$conn = connectDB();
+		$sql = "SELECT * FROM dosen WHERE nip=$nip" ;
+		$result = pg_query($conn, $sql);
+		$user_arr= pg_fetch_array($result);
+		return $user_arr;
 	}
 
 ?>
