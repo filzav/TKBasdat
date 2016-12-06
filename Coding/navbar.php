@@ -12,8 +12,8 @@
 	if ($role == "MHS") {
 		$roleString = "MAHASISWA";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Lamaran</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='membuatLamaran.php'>Buat Lamaran</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatlamaran.php'>Lamaran</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='membuatlamaran.php'>Buat Lamaran</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='logAsisten.php'>Log Per Mata Kuliah</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='daftarLog.php'>Log</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='buatLog.php'>Buat Log</a></li>";
@@ -23,7 +23,7 @@
 		$roleString = "DOSEN";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='bukaLowongan.php'>Buka Lowongan</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Daftar Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatlamaran.php'>Daftar Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='detailPelamar.php'>Detail Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='daftarAsistenPerMataKuliahUntukDosen.php'>Daftar Asisten</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='daftarLogUntukDosen.php'>Daftar Log</a></li>";
@@ -33,7 +33,7 @@
 		$roleString = "ADMIN";
 		$roleFunctions = $roleFunctions . "<li><a href='lowongan.php'>Lowongan</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='bukaLowongan.php'>Buka Lowongan</a></li>";
-		$roleFunctions = $roleFunctions . "<li><a href='melihatLamaran.php'>Daftar Pelamar</a></li>";
+		$roleFunctions = $roleFunctions . "<li><a href='melihatlamaran.php'>Daftar Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='detailPelamar.php'>Detail Pelamar</a></li>";
 		$roleFunctions = $roleFunctions . "<li><a href='daftarLogUntukDosen.php'>Daftar Log</a></li>";
 	}
