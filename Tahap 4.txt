@@ -1,0 +1,17 @@
+url aplikasi: http://mahasiswa.cs.ui.ac.id/~filza.valorisantyo41/TKBasdat/
+username: admin, bela, filza.valorisantyo41
+password: admin, bela, filza
+
+User Manual:
+Cara menggunakan Fitur Login/Logout
+- Masukan username yang ada di database bersesuaian dengan passwordnya
+- Untuk admin, username "admin", password "admin"
+
+Cara menggunakan Fitur Update Profile
+- Masukan data yang berbeda dari data sebelumnya, misal password awal "asd", ganti menjadi "dsa"
+- Klik tombol Submit
+
+Cara menggunakan Fitur Detail Pelamar
+- Kirim data dari page Daftar Pelamar, berupa npm dan idLamaran
+- Output berdasarkan data tersebut
+- Tombol Rekomendasi untuk Dosen dan Terima untuk Admin mengubah status lamaran
